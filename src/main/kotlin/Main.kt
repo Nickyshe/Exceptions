@@ -1,7 +1,37 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    val x = try {
+        divide(10,5)
+    }catch (e: DivisionByZeroException){
+        0
+    }finally {
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+    }
+    println("the result is $x")
+
+
+
+
+    println("enter a no: ")
+    val input = try{
+        readLine()?.toInt()
+
+    }catch (e: Exception){
+        2
+
+    }finally {
+        println("this is from the finally block")
+    }
+
+    println("you entered: $input")
+
+
+
 }
+class DivisionByZeroException: Exception("please you cannot divide by 0")
+fun divide(a : Int, b: Int):Int{
+    if (b == 0){
+        throw DivisionByZeroException()
+    }
+    return a / b
+}
+
